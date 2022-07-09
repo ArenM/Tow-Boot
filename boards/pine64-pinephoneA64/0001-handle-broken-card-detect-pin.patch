@@ -1,0 +1,36 @@
+From 6901c844e2fe188d859bc7d420c0d4ec9b67684a Mon Sep 17 00:00:00 2001
+From: ArenM <aren@peacevolution.org>
+Date: Thu, 28 Apr 2022 23:20:32 -0400
+Subject: [PATCH] handle broken card detect pin
+
+---
+ arch/arm/dts/sun50i-a64-pinephone.dtsi | 3 ++-
+ configs/pinephone_defconfig            | 1 +
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/dts/sun50i-a64-pinephone.dtsi b/arch/arm/dts/sun50i-a64-pinephone.dtsi
+index 9f69d489a8..c3815e9aca 100644
+--- a/arch/arm/dts/sun50i-a64-pinephone.dtsi
++++ b/arch/arm/dts/sun50i-a64-pinephone.dtsi
+@@ -226,7 +226,8 @@
+ 	pinctrl-0 = <&mmc0_pins>;
+ 	vmmc-supply = <&reg_dcdc1>;
+ 	vqmmc-supply = <&reg_dcdc1>;
+-	cd-gpios = <&pio 5 6 GPIO_ACTIVE_LOW>; /* PF6 */
++	/* cd-gpios = <&pio 5 6 GPIO_ACTIVE_LOW>; /1* PF6 *1/ */
++	broken-cd;
+ 	disable-wp;
+ 	bus-width = <4>;
+ 	status = "okay";
+diff --git a/configs/pinephone_defconfig b/configs/pinephone_defconfig
+index 64e13d3132..56623f181a 100644
+--- a/configs/pinephone_defconfig
++++ b/configs/pinephone_defconfig
+@@ -10,3 +10,4 @@ CONFIG_MMC_SUNXI_SLOT_EXTRA=2
+ CONFIG_PINEPHONE_DT_SELECTION=y
+ # CONFIG_SYS_MALLOC_CLEAR_ON_INIT is not set
+ CONFIG_OF_LIST="sun50i-a64-pinephone-1.1 sun50i-a64-pinephone-1.2"
++CONFIG_MMC_BROKEN_CD=y
+-- 
+2.35.1
+

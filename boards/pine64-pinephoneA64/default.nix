@@ -48,6 +48,7 @@ in
     patches = [
       ./0001-Enable-led-and-vibrate-on-boot-to-notify-user-of-boo.patch
       ./0001-HACK-button-sun4i-lradc-Provide-UCLASS_BUTTON-driver.patch
+      ./0001-handle-broken-card-detect-pin.patch
 
       # Fixes USB gadget mode enabled outside of defconfig for allwinner
       # https://patchwork.ozlabs.org/project/uboot/patch/20191127195602.7482-1-samuel@dionne-riel.com/
